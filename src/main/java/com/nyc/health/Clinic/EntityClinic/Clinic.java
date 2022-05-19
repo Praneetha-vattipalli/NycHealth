@@ -42,5 +42,10 @@ public class Clinic {
             message="Mobile number is invalid")
     @Column(name="phoneNumber")
     private String phoneNumber;
-
+@Column(name="status")
+    private String status;
+    @Column(name="StartDate")
+    private String StartDate;
+    @Column(name="EndDate")
+    private String EndDate;
 }
