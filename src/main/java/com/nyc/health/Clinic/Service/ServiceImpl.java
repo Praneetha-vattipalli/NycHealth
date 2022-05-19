@@ -1,15 +1,13 @@
 package com.nyc.health.Clinic.Service;
+
 import com.nyc.health.Clinic.EntityClinic.Clinic;
 import com.nyc.health.Clinic.Exception.ClinicNotFoundException;
 import com.nyc.health.Clinic.Repository.ClinicRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
+import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 
 @Service
@@ -53,5 +51,19 @@ public class ServiceImpl implements ClinicServices {
            return clinicRepo.findById(id)
                    .orElseThrow(()-> new ClinicNotFoundException("No Clinic with id " + " id " + "is found in Record"));
 
+    }
+    @Transactional
+    public List<Clinic> findByStartDateAndEndDate(String StartDate, String EndDate) {
+        return clinicRepo.findByStartDateAndEndDate(StartDate, EndDate);
+    }
+
+    @Override
+    public int setFixedFirstnameFor(String status, int id) {
+        return 0;
+    }
+
+    @Override
+    public int UpdateClinicByEndDate(String EndDate) {
+        return 0;
     }
 }

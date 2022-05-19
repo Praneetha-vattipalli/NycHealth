@@ -2,7 +2,6 @@ package com.nyc.health.Clinic.EntityClinic;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Generated;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -41,5 +40,12 @@ public class Clinic {
             message="Mobile number is invalid")
     @Column(name="phoneNumber")
     private String phoneNumber;
+    @Column(name="status")
+    private String status;
+    @Column(name="StartDate")
+    private String StartDate;
+    @Column(name="EndDate")
+    private String EndDate;
+
 
 }
