@@ -31,6 +31,7 @@ public class Clinic {
     private String address;
 
     @Column(name="email")
+    @Pattern(regexp = "")
     @NotEmpty(message = "Email is required")
     @Email
     private String email;

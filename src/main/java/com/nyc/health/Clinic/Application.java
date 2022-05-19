@@ -18,11 +18,20 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication(scanBasePackages = {"com.nyc.health.Clinic"})
 @SecurityScheme(name = "clinicAPI", scheme = "basic", type = SecuritySchemeType.HTTP, in = SecuritySchemeIn.HEADER)
 @OpenAPIDefinition(info = @Info(title = "NycHealth CLINIC API", version = "2.0", description = "Clinic Information"))
+@EnableSwagger2
+
 public class Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
 
-
+	@Bean
+	public Docket api(){
+		return new Docket(DocumentationType.SWAGGER_2)
+				.select()
+				.apis(RequestHandlerSelectors.basePackage("com.nyc.health.Clinic."))
+				.paths(PathSelectors.any())
+				.build();
+	}
 }

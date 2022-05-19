@@ -28,7 +28,14 @@ public class ClinicRestController {
          // service.getAllClinic();
           return ResponseEntity.status(HttpStatus.OK).headers(headers).body(service.getAllClinic());
      }
-
+    @GetMapping("/allClosedClinic/{StartDate}/{EndDate}")
+    public ResponseEntity<List<Clinic>> viewAllClosedClinic(@PathVariable String StartDate,@PathVariable String EndDate){
+        String msg = "list of All Closed Clinic";
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("desc","it will give list of all Closed Clinic");
+        // service.getAllClinic();
+        return ResponseEntity.status(HttpStatus.OK).headers(headers).body(service.findByStartDateAndEndDate( StartDate,EndDate));
+    }
     @GetMapping("/clinic/{id}")
     public ResponseEntity<Clinic> getClinicById(@PathVariable(value="id") Integer id )
     {
