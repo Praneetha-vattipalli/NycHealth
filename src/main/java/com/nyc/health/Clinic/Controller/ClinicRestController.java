@@ -57,4 +57,24 @@ public class ClinicRestController {
                return new ResponseEntity<>("Clinic Record with id " + id + " has deleted", HttpStatus.OK);
 
      }
+     @PostMapping("/closeClinic")
+    public ResponseEntity<String> CloseClinic(@RequestBody(required = true) Clinic clinic) {
+        Clinic updateClinic = service.getClinicById(clinic.getId());
+        updateClinic.setStatus("close");
+
+        service.updateClinicRecord(updateClinic, clinic.getId());
+        return new ResponseEntity<>("Clinic Record with id " + clinic.getId() + " has updated with status CLOSE", HttpStatus.OK);
+    }
+
+    @PostMapping("/closeClinic/{EndDate}")
+    public ResponseEntity<List<Clinic>> closeAllClinic( ){
+        String msg = "list of All Clinic";
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("desc","it will give list of all closed  Clinic");
+        List<Clinic> c= service.getAllClinic();
+        for(Clinic clinic:c){
+            clinic.setStatus("close");
+        }
+        return ResponseEntity.status(HttpStatus.OK).headers(headers).body(c);
+    }
 }
