@@ -93,4 +93,18 @@ public class ServiceImpl {
     }*/
 
     }
+    @Transactional
+    public List<Clinic> findByStartDateAndEndDate(String StartDate, String EndDate) {
+        return clinicRepo.findByStartDateAndEndDate(StartDate, EndDate);
+    }
+
+    @Override
+    public int setFixedFirstnameFor(String status, int id) {
+        return 0;
+    }
+
+    @Override
+    public int UpdateClinicByEndDate(String EndDate) {
+        return 0;
+    }
 }
